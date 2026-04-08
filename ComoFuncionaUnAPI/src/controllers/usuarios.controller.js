@@ -42,8 +42,8 @@ const obtener = async (req, res) => {
 // POST /usuarios → crea un nuevo usuario
 const crear = async (req, res) => {
   try {
-    const { nombre, email, edad } = req.body;
-    const nuevoUsuario = await Usuario.create({ nombre, email, edad });
+    const { nombre, email, edad, direccionUsuario } = req.body;
+    const nuevoUsuario = await Usuario.create({ nombre, email, edad, direccionUsuario });
     // 201 Created es el código correcto al crear un recurso nuevo
     res.status(201).json(nuevoUsuario);
   } catch (error) {
@@ -53,8 +53,10 @@ const crear = async (req, res) => {
 
 // PUT /usuarios/:id → actualiza un usuario completo
 const actualizar = async (req, res) => {
+  console.log('Actualizando usuario con id:', req.params.id);
   try {
     const usuario = await Usuario.findByPk(req.params.id);
+    console.log('Usuario encontrado:', usuario);
     if (!usuario) {
       return res.status(404).json({ error: 'Usuario no encontrado' });
     }

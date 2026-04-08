@@ -16,6 +16,12 @@ const Usuario = sequelize.define(
   'Usuario',   // nombre del modelo (Sequelize crea la tabla "Usuarios" en plural)
   {
     // Sequelize agrega "id" auto-incremental automáticamente si no lo defines.
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4, // genera un UUID automáticamente
+      primaryKey: true,               // clave primaria
+      allowNull: false,              // equivale a NOT NULL en SQL
+    },
 
     nombre: {
       type: DataTypes.STRING,
@@ -30,7 +36,15 @@ const Usuario = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+
+    direccionUsuario: {
+      type: DataTypes.STRING,
+      allowNull: false,              // equivale a NOT NULL en SQL
+      etiqueta: 'direccion_usuario', // nombre de la columna en la tabla (opcional, por defecto es el mismo que el campo)
+    },
+
   },
+
   {
     tableName: 'usuarios',           // fuerza el nombre de la tabla en minúscula
     timestamps: true,                // agrega createdAt y updatedAt automáticamente

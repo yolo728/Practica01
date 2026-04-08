@@ -26,7 +26,7 @@ const {
 //   router.get('/:id')  → GET /usuarios/:id
 //   etc.
 
-router.get('/', listar);        // GET    /usuarios
+router.get('/all', listar);        // GET    /usuarios
 router.get('/:id', obtener);    // GET    /usuarios/:id
 router.post('/', crear);        // POST   /usuarios
 router.put('/:id', actualizar); // PUT    /usuarios/:id

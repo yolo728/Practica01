@@ -50,6 +50,7 @@ const PORT = 4000;
 // { alter: true } actualiza las columnas si el modelo cambió (solo en desarrollo).
 sequelize
   .sync({ alter: true })
+  //.sync({ force: true })
   .then(() => {
     console.log('Base de datos conectada y tablas sincronizadas.');
     app.listen(PORT, () => {
