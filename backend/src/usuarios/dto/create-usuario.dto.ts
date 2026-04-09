@@ -1,4 +1,4 @@
-import { IsEmail, IsInt, IsString, Min } from 'class-validator';
+import { IsString, IsEmail, IsInt,  Min } from 'class-validator';
 
 /**
  * DTO (Data Transfer Object): define la "forma" del cuerpo (body) que debe
@@ -12,12 +12,14 @@ import { IsEmail, IsInt, IsString, Min } from 'class-validator';
  */
 export class CreateUsuarioDto {
   @IsString()
-  nombre: string;
+  nombre!: string;
 
   @IsEmail()
-  email: string;
+  email!: string;
 
   @IsInt()
-  @Min(0)
-  edad: number;
+  /*@Min(0)*/
+  edad!: number;
 }
+
+

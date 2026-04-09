@@ -8,15 +8,15 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
  */
 @Entity('usuarios')
 export class Usuario {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id!: string;
 
   @Column()
-  nombre: string;
+  nombre!: string;
 
   @Column({ unique: true })
-  email: string;
+  email!: string;
 
   @Column()
-  edad: number;
+  edad!: number;
 }

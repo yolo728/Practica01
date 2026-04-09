@@ -31,7 +31,9 @@ export function useUsuarios() {
     try {
       setLoading(true);
       setError(null);
-      const data = await apiFetch<Usuario[]>('/usuarios');
+      // Simula un delay de 2 segundos para mostrar el estado de carga
+      //await new Promise(resolve => setTimeout(resolve, 2000));
+      const data = await apiFetch<Usuario[]>('/users/all');
       setUsuarios(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error desconocido');
@@ -55,7 +57,7 @@ export function useUsuarios() {
     return nuevo;
   };
 
-  const actualizar = async (id: number, datos: UpdateUsuarioData) => {
+  const actualizar = async (id: string, datos: UpdateUsuarioData) => {
     const actualizado = await apiFetch<Usuario>(`/usuarios/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(datos),
@@ -67,7 +69,7 @@ export function useUsuarios() {
     return actualizado;
   };
 
-  const eliminar = async (id: number) => {
+  const eliminar = async (id: string) => {
     await apiFetch(`/usuarios/${id}`, { method: 'DELETE' });
     // Filtra el usuario eliminado del estado local.
     setUsuarios((prev) => prev.filter((u) => u.id !== id));

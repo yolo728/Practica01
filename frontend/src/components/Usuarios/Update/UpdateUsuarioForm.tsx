@@ -5,7 +5,7 @@ import { UpdateUsuarioData, Usuario } from '@/types/usuario';
 
 interface Props {
   usuario: Usuario;
-  onUpdate: (id: number, datos: UpdateUsuarioData) => Promise<void>;
+  onUpdate: (id: string, datos: UpdateUsuarioData) => Promise<void>;
   onCancelar: () => void;
 }
 

@@ -43,14 +43,14 @@ export default function UsuariosPage() {
     setModo('update');
   };
 
-  const handleActualizar = async (id: number, datos: Parameters<typeof actualizar>[1]) => {
+  const handleActualizar = async (id: string, datos: Parameters<typeof actualizar>[1]) => {
     await actualizar(id, datos);
     setModo('view'); // vuelve a la lista tras actualizar
     setUsuarioSeleccionado(null);
   };
 
-  const handleEliminar = async (id: number) => {
-    if (!confirm(`¿Seguro que deseas eliminar el usuario #${id}?`)) return;
+  const handleEliminar = async (id: string) => {
+    if (!confirm(`¿Seguro que deseas eliminar el usuario ${id}?`)) return;
     await eliminar(id);
   };
 
@@ -58,6 +58,8 @@ export default function UsuariosPage() {
     setModo('view');
     setUsuarioSeleccionado(null);
   };
+
+  console.log('Renderizando UsuariosPage con modo:', modo);
 
   // --- Render ---
 

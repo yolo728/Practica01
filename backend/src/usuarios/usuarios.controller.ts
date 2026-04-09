@@ -4,7 +4,6 @@ import {
   Delete,
   Get,
   Param,
-  ParseIntPipe,
   Patch,
   Post,
 } from '@nestjs/common';
@@ -22,7 +21,7 @@ import { UsuariosService } from './usuarios.service';
  * @Controller('usuarios') hace que todas las rutas de esta clase
  * empiecen con /usuarios.
  */
-@Controller('usuarios')
+@Controller('users')
 export class UsuariosController {
   /**
    * NestJS inyecta automáticamente UsuariosService aquí.
@@ -44,7 +43,7 @@ export class UsuariosController {
    * GET /usuarios
    * Devuelve la lista completa de usuarios.
    */
-  @Get()
+  @Get("/all")
   findAll() {
     return this.usuariosService.findAll();
   }
@@ -52,10 +51,9 @@ export class UsuariosController {
   /**
    * GET /usuarios/:id
    * Devuelve un usuario por su id.
-   * ParseIntPipe convierte el string del parámetro ":id" a número entero.
    */
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number) {
+  findOne(@Param('id') id: string) {
     return this.usuariosService.findOne(id);
   }
 
@@ -65,7 +63,7 @@ export class UsuariosController {
    */
   @Patch(':id')
   update(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('id') id: string,
     @Body() updateUsuarioDto: UpdateUsuarioDto,
   ) {
     return this.usuariosService.update(id, updateUsuarioDto);
@@ -76,7 +74,7 @@ export class UsuariosController {
    * Elimina un usuario.
    */
   @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
+  remove(@Param('id') id: string) {
     return this.usuariosService.remove(id);
   }
 }

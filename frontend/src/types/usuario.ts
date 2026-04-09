@@ -3,7 +3,7 @@
  * Debe coincidir con la entidad del backend.
  */
 export interface Usuario {
-  id: number;
+  id: string;
   nombre: string;
   email: string;
   edad: number;

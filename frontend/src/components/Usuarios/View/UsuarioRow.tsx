@@ -3,7 +3,7 @@ import { Usuario } from '@/types/usuario';
 interface Props {
   usuario: Usuario;
   onEditar: (usuario: Usuario) => void;
-  onEliminar: (id: number) => void;
+  onEliminar: (id: string) => void;
 }
 
 /**

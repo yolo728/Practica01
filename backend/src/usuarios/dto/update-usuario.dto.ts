@@ -10,3 +10,4 @@ import { CreateUsuarioDto } from './create-usuario.dto';
  * pero no lo sería en CreateUsuarioDto donde todos los campos son obligatorios.
  */
 export class UpdateUsuarioDto extends PartialType(CreateUsuarioDto) {}
+

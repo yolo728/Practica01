@@ -37,7 +37,7 @@ export class UsuariosService {
   }
 
   /** Busca un usuario por id. Lanza 404 si no existe. */
-  async findOne(id: number): Promise<Usuario> {
+  async findOne(id: string): Promise<Usuario> {
     const usuario = await this.usuariosRepository.findOneBy({ id });
     if (!usuario) {
       throw new NotFoundException(`Usuario con id ${id} no encontrado`);
@@ -46,14 +46,14 @@ export class UsuariosService {
   }
 
   /** Actualiza un usuario. Solo modifica los campos que lleguen en el DTO. */
-  async update(id: number, updateUsuarioDto: UpdateUsuarioDto): Promise<Usuario> {
+  async update(id: string, updateUsuarioDto: UpdateUsuarioDto): Promise<Usuario> {
     const usuario = await this.findOne(id); // lanza 404 si no existe
     Object.assign(usuario, updateUsuarioDto);
     return this.usuariosRepository.save(usuario);
   }
 
   /** Elimina un usuario por id. */
-  async remove(id: number): Promise<{ mensaje: string }> {
+  async remove(id: string): Promise<{ mensaje: string }> {
     const usuario = await this.findOne(id); // lanza 404 si no existe
     await this.usuariosRepository.remove(usuario);
     return { mensaje: `Usuario con id ${id} eliminado correctamente` };

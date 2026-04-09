@@ -4,7 +4,7 @@ import UsuarioRow from './UsuarioRow';
 interface Props {
   usuarios: Usuario[];
   onEditar: (usuario: Usuario) => void;
-  onEliminar: (id: number) => void;
+  onEliminar: (id: string) => void;
 }
 
 /**
@@ -12,6 +12,7 @@ interface Props {
  * Delega cada fila a UsuarioRow.
  */
 export default function UsuariosTable({ usuarios, onEditar, onEliminar }: Props) {
+  console.log('Renderizando UsuariosTable con usuarios:', usuarios);
   if (usuarios.length === 0) {
     return (
       <p className="text-center text-gray-500 py-8">
